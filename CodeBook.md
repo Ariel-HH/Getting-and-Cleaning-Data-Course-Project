@@ -1,9 +1,9 @@
 ## Description of this CodeBook
 
-Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. The organization of this CodeBook is as follows:
+Our objective is to create a data set from the measurements made in the experiments described in the â€˜READMEâ€™ file. The organization of this CodeBook is as follows:
 
 - Description of the files that originally contained the data which we read and manipulate on the 'run_analysis.R' R script.
-- Description of the variables measured  in the experiments described in the ‘README’ file, which measurements data is contained in the files mentioned in the previous point.
+- Description of the variables measured  in the experiments described in the â€˜READMEâ€™ file, which measurements data is contained in the files mentioned in the previous point.
 - Description of the 'run_analysis.R' R script, in which we read the data and construct from it a new independent tidy data set.
 - Description of the new data set mentioned on the previous point.
 
