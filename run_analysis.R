@@ -1,3 +1,17 @@
+## It is assumed that all the files to read are already in the working directory.
+## If not, it can be done with the following code:
+# ## create and set working dir
+# if(!file.exists("./data")){dir.create("./data")}
+# setwd("./data")
+# 
+# 
+# ## Downloading and unziping
+# library(utils)
+# url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+# download.file(url, destfile = "Dataset.zip")
+# unzip("Dataset.zip")
+# setwd(paste0("./", dir()[2]))
+
 ## Reading data
 library(data.table)
 features <- fread("features.txt")
