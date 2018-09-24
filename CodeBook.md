@@ -1,6 +1,6 @@
-## Description of this CodeBook
+## Description of this Code-Book
 
-Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. The organization of this CodeBook is as follows:
+Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. The organization of this Code-Book is as follows:
 
 - Description of the files that originally contained the data which we read and manipulate on the 'run_analysis.R' R script.
 - Description of the variables measured  in the experiments described in the ‘README’ file, which measurements data is contained in the files mentioned in the previous point.
@@ -88,7 +88,7 @@ The complete list of variables of each feature vector is available in 'features.
 
 ## Description of the 'run_analysis.R' R script
 
-*We assume the data has been downloaded and the files in the second section of this CodeBook are contained in the working directory.  If not, this task can be achieved with the following code:*
+*We assume the data has been downloaded and the files in the second section of this Code-Book are contained in the working directory.  If not, this task can be achieved with the following code:*
 <pre><code>if(!file.exists("./data")){dir.create("./data")}
 setwd("./data")
 library(utils)
@@ -123,7 +123,7 @@ testActivities <- activities[testLabels$V1, 2]</code></pre>
 testData <- cbind(testSet, testActivities, testSubjects)
 dataSet <- rbind(trainData, testData)</code></pre>
 
-*Asigning names:*
+*Asigning descriptive names:*
 <pre><code>names(dataSet) <- c(features$V2[featureSelector], "activity", "subjectID")</code></pre>
 
 *Creating the second (independent) tidy data set with the average of each variable for each activity and each subject:*
