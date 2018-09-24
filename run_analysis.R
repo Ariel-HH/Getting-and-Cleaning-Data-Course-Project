@@ -28,8 +28,6 @@ featureSelector <- grep("([Mm]ean|[Ss]td)", features$V2)
 trainSet <- fread("train/X_train.txt", select = featureSelector)
 testSet <- fread("test/X_test.txt", select = featureSelector)
 
-
-
 ## Creating a first data set with all the information
 # Creating an activity vectors with descriptive activities names
 trainActivities <- activities[trainLabels$V1, 2]
