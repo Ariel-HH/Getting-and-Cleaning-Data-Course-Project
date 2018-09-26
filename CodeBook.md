@@ -1,6 +1,6 @@
 ## Description of this Code-Book
 
-Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. Here we explain the meaning of the variables measured  in the experiments described in the ‘README’ file.
+Our objective is to create a data set from the measurements made in the experiments described in the 'README' file. Here we explain the meaning of the variables measured in the experiments and the ones in the new data set created by the R script 'run_analysis'.
 
 ## Description of the original variables
 
