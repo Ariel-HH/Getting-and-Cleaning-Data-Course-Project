@@ -44,7 +44,7 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 
 ## Description of the 'run_analysis.R' R script
 
-*We assume the data has been downloaded and the files listed in above are contained in the working directory.  If not, this task can be achieved with the following code:*
+*We assume the data has been downloaded and the files listed above are contained in the working directory.  If not, this task can be achieved with the following code:*
 <pre><code>if(!file.exists("./data")){dir.create("./data")}
 setwd("./data")
 library(utils)
