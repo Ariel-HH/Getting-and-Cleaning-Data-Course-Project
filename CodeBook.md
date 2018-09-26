@@ -2,7 +2,7 @@
 
 Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. Here we explain the meaning of the variables measured  in the experiments described in the ‘README’ file.
 
-## Description of the variables
+## Description of the original variables
 
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
@@ -59,52 +59,7 @@ tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
 
-The complete list of variables of each feature vector is available in 'features.txt'
-
-## Description of the 'run_analysis.R' R script
-
-*We assume the data has been downloaded and the files in the second section of this Code-Book are contained in the working directory.  If not, this task can be achieved with the following code:*
-<pre><code>if(!file.exists("./data")){dir.create("./data")}
-setwd("./data")
-library(utils)
-url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(url, destfile = "Dataset.zip")
-setwd(paste0("./", dir()[2]))</code></pre>
-
-##### The 'run_analysis.R' script starts here.
-
-*Reading data with features, activities, and subjects:*
-<pre><code>library(data.table)
-features <- fread("features.txt")
-activities <- fread("activity_labels.txt")
-trainLabels <- fread("train/y_train.txt")
-testLabels <- fread("test/y_test.txt")
-trainSubjects <- fread("train/subject_train.txt")
-testSubjects <- fread("test/subject_test.txt")</code></pre>
-
-*Filtering the measurements on the mean and standard deviation:*
-<pre><code>featureSelector <- grep("([Mm]ean|[Ss]td)", features$V2)</code></pre>
-
-*Reading only the selected features on the train|test-sets:*
-<pre><code>trainSet <- fread("train/X_train.txt", select = featureSelector)
-testSet <- fread("test/X_test.txt", select = featureSelector)</code></pre>
-
-*Creating an activity vector with descriptive activities names:*
-<pre><code>trainActivities <- activities[trainLabels$V1, 2]
-testActivities <- activities[testLabels$V1, 2]</code></pre>
-
-*Merging the data (we don't keep train|test-labels because they contain the same info that train|test-activities):*
-<pre><code>trainData <- cbind(trainSet, trainActivities, trainSubjects)
-testData <- cbind(testSet, testActivities, testSubjects)
-dataSet <- rbind(trainData, testData)</code></pre>
-
-*Asigning descriptive names:*
-<pre><code>names(dataSet) <- c(features$V2[featureSelector], "activity", "subjectID")</code></pre>
-
-*Creating the second (independent) tidy data set with the average of each variable for each activity and each subject:*
-<pre><code>secondDataSet <- dataSet[, lapply(.SD, mean), by = .(activity, subjectID)]</code></pre>
-
-## Description of the new data set
+## Description of the new data set (and new variables)
 
 The data set created on the last step in the script 'run_analysis.R' contains the average of each feature variable related to the measurements on the mean and standard deviation, grouped by activity and subject.
 The first two columns are 'activity' (the activities in the experiment, STANDING, WALKING, etc..) and 'subjecID' (the identification of the subjects, with numbers between 1 and 30).
