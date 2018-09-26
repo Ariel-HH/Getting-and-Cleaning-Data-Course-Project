@@ -1,31 +1,6 @@
 ## Description of this Code-Book
 
-Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. The organization of this Code-Book is as follows:
-
-- Description of the files that originally contained the data which we read and manipulate on the 'run_analysis.R' R script.
-- Description of the variables measured  in the experiments described in the ‘README’ file, which measurements data is contained in the files mentioned in the previous point.
-- Description of the 'run_analysis.R' R script, in which we read the data and construct from it a new independent tidy data set.
-- Description of the new data set mentioned on the previous point.
-
-## Files that originally contained the data
-
-- 'features_info.txt': Shows information about the variables used on the feature vector.
-
-- 'features.txt': List of all features.
-
-- 'activity_labels.txt': Links the class labels with their activity name.
-
-- 'train/X_train.txt': Training set.
-
-- 'train/y_train.txt': Training labels.
-
-- 'test/X_test.txt': Test set.
-
-- 'test/y_test.txt': Test labels. 
-
-- 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
-
-- 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+Our objective is to create a data set from the measurements made in the experiments described in the ‘README’ file. Here we explain the meaning of the variables measured  in the experiments described in the ‘README’ file.
 
 ## Description of the variables
 
