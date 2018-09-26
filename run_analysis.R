@@ -44,3 +44,5 @@ names(dataSet) <- c(features$V2[featureSelector], "activity", "subjectID")
 ## Creating the second (independent) tidy data set with the average of each 
 ## variable for each activity and each subject
 secondDataSet <- dataSet[, lapply(.SD, mean), by = .(activity, subjectID)]
+
+secondDataSet
