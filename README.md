@@ -41,3 +41,46 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 - 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
 
 - 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+
+## Description of the 'run_analysis.R' R script
+
+*We assume the data has been downloaded and the files listed in above are contained in the working directory.  If not, this task can be achieved with the following code:*
+<pre><code>if(!file.exists("./data")){dir.create("./data")}
+setwd("./data")
+library(utils)
+url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(url, destfile = "Dataset.zip")
+setwd(paste0("./", dir()[2]))</code></pre>
+
+##### The 'run_analysis.R' script starts here.
+
+*Reading data with features, activities, and subjects:*
+<pre><code>library(data.table)
+features <- fread("features.txt")
+activities <- fread("activity_labels.txt")
+trainLabels <- fread("train/y_train.txt")
+testLabels <- fread("test/y_test.txt")
+trainSubjects <- fread("train/subject_train.txt")
+testSubjects <- fread("test/subject_test.txt")</code></pre>
+
+*Filtering the measurements on the mean and standard deviation:*
+<pre><code>featureSelector <- grep("([Mm]ean|[Ss]td)", features$V2)</code></pre>
+
+*Reading only the selected features on the train|test-sets:*
+<pre><code>trainSet <- fread("train/X_train.txt", select = featureSelector)
+testSet <- fread("test/X_test.txt", select = featureSelector)</code></pre>
+
+*Creating an activity vector with descriptive activities names:*
+<pre><code>trainActivities <- activities[trainLabels$V1, 2]
+testActivities <- activities[testLabels$V1, 2]</code></pre>
+
+*Merging the data (we don't keep train|test-labels because they contain the same info that train|test-activities):*
+<pre><code>trainData <- cbind(trainSet, trainActivities, trainSubjects)
+testData <- cbind(testSet, testActivities, testSubjects)
+dataSet <- rbind(trainData, testData)</code></pre>
+
+*Asigning descriptive names:*
+<pre><code>names(dataSet) <- c(features$V2[featureSelector], "activity", "subjectID")</code></pre>
+
+*Creating the second (independent) tidy data set with the average of each variable for each activity and each subject:*
+<pre><code>secondDataSet <- dataSet[, lapply(.SD, mean), by = .(activity, subjectID)]</code></pre>
