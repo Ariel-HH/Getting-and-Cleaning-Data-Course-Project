@@ -50,7 +50,7 @@ setwd("./data")
 library(utils)
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url, destfile = "Dataset.zip")
-# unzip("Dataset.zip")
+unzip("Dataset.zip")
 setwd(paste0("./", dir()[2]))</code></pre>
 
 ##### The 'run_analysis.R' script starts here.
